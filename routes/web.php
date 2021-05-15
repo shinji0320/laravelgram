@@ -12,3 +12,15 @@
 */
 
 Route::get('/', 'PostsController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//ユーザ編集画面
+Route::get('/users/edit', 'UsersController@edit');
+//ユーザ更新画面
+Route::post('/users/update', 'UsersController@update');
+
+// ユーザ詳細画面
+Route::get('/users/{user_id}', 'UsersController@show');
