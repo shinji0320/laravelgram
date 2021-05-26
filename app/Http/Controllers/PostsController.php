@@ -19,7 +19,7 @@ class PostsController extends Controller
         $posts = Post::limit(10)
             ->orderBy('created_at', 'desc')
             ->get();
-            
+
          // テンプレート「post/index.blade.php」を表示します。
         return view('post/index', ['posts' => $posts]);
     }
@@ -45,9 +45,9 @@ class PostsController extends Controller
         $post->user_id = Auth::user()->id;
 
         $post->save();
-        
+
         $request->photo->storeAs('public/post_images', $post->id . '.jpg');
-        
+
         // 「/」 ルートにリダイレクト
         return redirect('/');
     }
